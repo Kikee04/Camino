@@ -3,40 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Camino de Santiago 2026 · Gijón → Santiago</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Crimson+Pro:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Camino del Norte · Julio 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #F5F0E8;
-    --parchment: #EDE5D0;
-    --bark: #5C3D2E;
-    --moss: #4A6741;
-    --moss-light: #6B9463;
-    --stone: #8B7355;
-    --stone-light: #B8A88A;
-    --rust: #C65D3B;
-    --sky: #6B8FA8;
-    --ink: #2A1F14;
-    --fog: #9E9085;
-    --gold: #C4953A;
+    --cream: #F7F4EF;
+    --warm-white: #FDFAF6;
+    --brown: #5C3D2E;
+    --terracotta: #C4622D;
+    --gold: #D4A847;
+    --sage: #7A8C6E;
+    --dark: #2A1F1A;
+    --mid: #7A6E65;
+    --light-line: #E8E0D5;
+    --card-bg: #FFFFFF;
+    --shadow: 0 2px 20px rgba(92,61,46,0.08);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background-color: var(--cream);
-    color: var(--ink);
-    font-family: 'Crimson Pro', Georgia, serif;
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'Source Sans 3', sans-serif;
     font-size: 17px;
-    line-height: 1.65;
-    min-height: 100vh;
+    line-height: 1.7;
   }
 
   /* ── HEADER ── */
   header {
-    background: var(--bark);
+    background: var(--brown);
     color: var(--cream);
-    padding: 2rem 1.25rem 1.75rem;
+    padding: 48px 24px 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -45,177 +43,331 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.5;
+    background: repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.03) 40px,
+      rgba(255,255,255,0.03) 41px
+    );
   }
-  .header-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+  .header-shell {
+    position: relative;
+    z-index: 1;
+  }
+  .shell-icon {
+    font-size: 48px;
     display: block;
+    margin-bottom: 12px;
+    opacity: 0.9;
   }
   header h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(1.6rem, 6vw, 2.4rem);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 6vw, 44px);
     font-weight: 700;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-    position: relative;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
   }
   header .subtitle {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
+    font-size: 16px;
+    opacity: 0.75;
+    font-weight: 300;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--stone-light);
-    margin-top: 0.5rem;
-    position: relative;
-  }
-  .route-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 100px;
-    padding: 0.35rem 0.9rem;
-    margin-top: 1rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: var(--cream);
-    position: relative;
   }
 
-  /* ── GROUP CARD ── */
-  .group-card {
-    background: var(--moss);
-    color: var(--cream);
-    margin: 1.25rem;
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    position: relative;
-    overflow: hidden;
+  /* ── RESUMEN GENERAL ── */
+  .summary {
+    background: var(--terracotta);
+    color: white;
+    padding: 28px 20px;
   }
-  .group-card::after {
-    content: '🎒';
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2.5rem;
-    opacity: 0.2;
-  }
-  .group-card h2 {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--moss-light);
-    margin-bottom: 0.75rem;
-  }
-  .peregrinos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .peregrino-chip {
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 100px;
-    padding: 0.3rem 0.85rem;
-    font-family: 'Crimson Pro', serif;
-    font-weight: 600;
-    font-size: 1rem;
-  }
-  .trip-stats {
+  .summary-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.15);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
   }
-  .stat {
+  .summary-item {
     text-align: center;
   }
-  .stat-num {
+  .summary-item .num {
     font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
+    font-size: 34px;
     font-weight: 700;
-    line-height: 1;
     display: block;
+    line-height: 1.1;
   }
-  .stat-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.1em;
+  .summary-item .label {
+    font-size: 13px;
+    opacity: 0.85;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
-    margin-top: 0.2rem;
-    display: block;
+    letter-spacing: 1.5px;
   }
 
-  /* ── AVISO CREDENCIAL ── */
-  .aviso-credencial {
-    margin: 0 1.25rem 1.25rem;
-    background: var(--gold);
-    color: var(--ink);
-    border-radius: 10px;
-    padding: 0.9rem 1.1rem;
-    display: flex;
-    gap: 0.75rem;
-    align-items: flex-start;
+  /* ── EQUIPO ── */
+  .team-section {
+    padding: 36px 20px;
+    max-width: 680px;
+    margin: 0 auto;
   }
-  .aviso-credencial .icon { font-size: 1.4rem; flex-shrink: 0; }
-  .aviso-credencial strong {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.15rem;
-  }
-  .aviso-credencial p { font-size: 0.9rem; line-height: 1.4; }
-
-  /* ── SECTION TITLE ── */
   .section-title {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--fog);
-    padding: 0 1.25rem 0.75rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--brown);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--light-line);
+  }
+  .team-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .chip {
+    background: var(--card-bg);
+    border: 1.5px solid var(--light-line);
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--brown);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow);
+  }
+  .chip .role {
+    font-size: 12px;
+    color: var(--mid);
+    font-weight: 300;
   }
 
   /* ── TIMELINE ── */
+  .timeline-section {
+    padding: 10px 20px 60px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
   .timeline {
-    padding: 0 1.25rem;
     position: relative;
+    padding-left: 28px;
   }
   .timeline::before {
     content: '';
     position: absolute;
-    left: calc(1.25rem + 20px);
-    top: 0;
-    bottom: 0;
+    left: 34px;
+    top: 8px;
+    bottom: 8px;
     width: 2px;
-    background: linear-gradient(to bottom, var(--moss), var(--stone-light), var(--rust));
-    opacity: 0.3;
+    background: linear-gradient(to bottom, var(--terracotta), var(--gold), var(--sage));
   }
 
+  /* Hide the old card dot since we now use day-dot-col */
+  .day-card::before { display: none; }
+
+  .day-card {
+    position: relative;
+    margin-bottom: 28px;
+    background: var(--card-bg);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--light-line);
+  }
+  .day-card::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 22px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    border: 2.5px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--terracotta);
+    z-index: 2;
+  }
+  .day-card.rest::before { background: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+  .day-card.arrival::before { background: var(--sage); box-shadow: 0 0 0 2px var(--sage); }
+  .day-card.transit::before { background: var(--mid); box-shadow: 0 0 0 2px var(--mid); }
+
+  .day-header {
+    padding: 16px 18px 12px;
+    border-bottom: 1px solid var(--light-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .day-date {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .day-etapa {
+    font-size: 12px;
+    background: var(--cream);
+    color: var(--mid);
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--light-line);
+  }
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--dark);
+    margin-top: 2px;
+    width: 100%;
+  }
+  .day-km {
+    font-size: 13px;
+    color: var(--mid);
+    margin-top: 2px;
+  }
+
+  .day-body {
+    padding: 16px 18px;
+  }
+
+  /* Albergue card */
+  .albergue {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 4px;
+  }
+  .albergue-name {
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--brown);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .albergue-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .albergue-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 15px;
+  }
+  .albergue-row .icon {
+    color: var(--terracotta);
+    font-size: 16px;
+    flex-shrink: 0;
+    width: 20px;
+    margin-top: 1px;
+  }
+  .albergue-row .val {
+    color: var(--dark);
+    flex: 1;
+  }
+  .albergue-row .val a {
+    color: var(--terracotta);
+    text-decoration: none;
+  }
+  .nota {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--mid);
+    font-style: italic;
+    padding: 10px 12px;
+    background: white;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+  }
+  .resp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    background: var(--brown);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* Multiple albergue options */
+  .options-label {
+    font-size: 13px;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .albergue + .albergue { margin-top: 10px; }
+  .albergue.secondary {
+    background: white;
+    border: 1px dashed var(--light-line);
+  }
+  .tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .tag.pref { background: #e8f5e9; color: #2e7d32; }
+  .tag.alt { background: #fff3e0; color: #e65100; }
+
+  /* special day styles */
+  .day-card.transit .day-header { background: #f9f7f4; }
+  .day-card.arrival .day-header { background: #f2f5ef; }
+
+  .arrival-box {
+    background: linear-gradient(135deg, var(--sage) 0%, #5a7a4e 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .arrival-box .big {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .arrival-box .sub { font-size: 14px; opacity: 0.85; }
+
+  /* ── DAY DOT (fecha en círculo) ── */
   .day-entry {
     display: flex;
-    gap: 0.9rem;
-    margin-bottom: 1.25rem;
-    position: relative;
+    gap: 0px;
+    align-items: flex-start;
+    margin-bottom: 28px;
   }
-
+  .day-entry > .day-card {
+    flex: 1;
+    margin-bottom: 0;
+  }
   .day-dot-col {
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 42px;
+    width: 48px;
+    padding-top: 16px;
   }
   .day-dot {
     width: 42px;
@@ -224,706 +376,516 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
     font-weight: 700;
     flex-shrink: 0;
     position: relative;
-    z-index: 1;
-    line-height: 1;
+    z-index: 2;
+    line-height: 1.1;
     text-align: center;
-    border: 2px solid transparent;
-  }
-  .day-dot.llegada { background: var(--sky); color: white; border-color: var(--sky); }
-  .day-dot.etapa { background: var(--cream); color: var(--moss); border-color: var(--moss); }
-  .day-dot.etapa-larga { background: var(--rust); color: white; border-color: var(--rust); }
-  .day-dot.destino { background: var(--gold); color: var(--ink); border-color: var(--gold); }
-  .day-dot.estancia { background: var(--parchment); color: var(--fog); border-color: var(--stone-light); }
-
-  .day-card {
-    flex: 1;
-    background: white;
-    border-radius: 10px;
-    padding: 0.9rem 1rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04);
-    transition: box-shadow 0.2s;
-  }
-  .day-card:active { box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
-
-  .day-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .day-date {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--fog);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 0.15rem;
-  }
-  .day-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    line-height: 1.25;
-    color: var(--ink);
-  }
-  .km-badge {
-    background: var(--parchment);
-    color: var(--stone);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    font-weight: 700;
-    padding: 0.2rem 0.5rem;
-    border-radius: 6px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .km-badge.larga { background: #FDEEE9; color: var(--rust); }
-
-  .alojamiento {
-    background: var(--cream);
-    border-radius: 7px;
-    padding: 0.65rem 0.75rem;
-    margin-top: 0.6rem;
-  }
-  .aloj-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--fog);
-    margin-bottom: 0.3rem;
-  }
-  .aloj-nombre {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--ink);
-    line-height: 1.3;
-  }
-  .aloj-detalle {
-    font-size: 0.85rem;
-    color: var(--stone);
-    margin-top: 0.15rem;
-    line-height: 1.4;
-  }
-
-  .aloj-opciones { display: flex; flex-direction: column; gap: 0.5rem; }
-  .aloj-opcion {
-    background: white;
-    border-radius: 6px;
-    padding: 0.55rem 0.7rem;
-    border-left: 3px solid var(--moss);
-  }
-  .aloj-opcion.secundaria { border-left-color: var(--stone-light); }
-
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    margin-top: 0.5rem;
-  }
-  .tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.06em;
-    padding: 0.2rem 0.5rem;
-    border-radius: 5px;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-  .tag-verde { background: #E8F3E6; color: var(--moss); }
-  .tag-azul { background: #E6EEF3; color: var(--sky); }
-  .tag-naranja { background: #FDEEE9; color: var(--rust); }
-  .tag-dorado { background: #FBF2E0; color: var(--gold); }
-  .tag-gris { background: var(--parchment); color: var(--fog); }
-
-  .nota-especial {
-    background: #FBF2E0;
-    border-left: 3px solid var(--gold);
-    border-radius: 0 7px 7px 0;
-    padding: 0.55rem 0.75rem;
-    margin-top: 0.6rem;
-    font-size: 0.88rem;
-    color: var(--ink);
-    line-height: 1.4;
-  }
-  .nota-especial strong { color: var(--bark); font-weight: 600; }
-
-  .etapa-desc {
-    font-size: 0.9rem;
-    color: var(--stone);
-    margin-top: 0.3rem;
-    line-height: 1.4;
-  }
-
-  /* ── LLEGADA ── */
-  .llegada-card {
-    background: linear-gradient(135deg, var(--sky), #4A7A9B);
-    color: white;
-    border-radius: 10px;
-    padding: 1rem 1.1rem;
-    flex: 1;
-    box-shadow: 0 2px 8px rgba(107,143,168,0.3);
-  }
-  .llegada-card .day-date { color: rgba(255,255,255,0.65); }
-  .llegada-card .day-title { color: white; font-size: 1.1rem; }
-  .llegada-card .etapa-desc { color: rgba(255,255,255,0.8); }
-
-  /* ── DESTINO ── */
-  .destino-card {
-    background: linear-gradient(135deg, #8B6914, var(--gold));
-    color: white;
-    border-radius: 10px;
-    padding: 1rem 1.1rem;
-    flex: 1;
-    box-shadow: 0 2px 8px rgba(196,149,58,0.35);
-  }
-  .destino-card .day-date { color: rgba(255,255,255,0.65); }
-  .destino-card .day-title { color: white; font-size: 1.15rem; }
-  .destino-card .etapa-desc { color: rgba(255,255,255,0.85); }
-
-  /* ── ESTANCIA ── */
-  .estancia-card {
-    background: var(--parchment);
-    border-radius: 10px;
-    padding: 0.9rem 1rem;
-    flex: 1;
-    border: 1px dashed var(--stone-light);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--ink);
-    color: var(--fog);
-    text-align: center;
-    padding: 2rem 1.25rem;
-    margin-top: 2rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    line-height: 2;
-  }
-  footer .buen-camino {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.4rem;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 0.75rem;
+    border: 2.5px solid transparent;
     letter-spacing: 0;
   }
-  .shell-footer { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
+  .day-dot.etapa   { background: var(--cream); color: var(--brown); border-color: var(--terracotta); }
+  .day-dot.rest    { background: #FBF2E0; color: #7a5a00; border-color: var(--gold); }
+  .day-dot.arrival { background: #f0f5ee; color: var(--sage); border-color: var(--sage); }
+  .day-dot.transit { background: #f0eeec; color: var(--mid); border-color: var(--mid); }
+  .day-dot.destino { background: var(--gold); color: white; border-color: var(--gold); }
 
-  /* ── PROGRESS BAR ── */
-  .progress-bar-container {
-    background: var(--parchment);
-    margin: 0 1.25rem 1.25rem;
-    border-radius: 10px;
-    padding: 0.9rem 1.1rem;
-  }
-  .progress-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--fog);
-    margin-bottom: 0.6rem;
-    display: flex;
-    justify-content: space-between;
-  }
-  .progress-bar {
-    height: 8px;
-    background: var(--stone-light);
-    border-radius: 100px;
-    overflow: hidden;
-    opacity: 0.3;
-  }
-  .progress-bar-fill {
-    height: 100%;
-    background: linear-gradient(to right, var(--moss), var(--rust));
-    border-radius: 100px;
-    width: 100%;
-  }
-  .km-total {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--bark);
+  /* footer */
+  footer {
     text-align: center;
-    margin-top: 0.5rem;
+    padding: 32px 20px;
+    font-size: 14px;
+    color: var(--mid);
+    border-top: 1px solid var(--light-line);
   }
-  .km-total span { font-size: 0.8rem; font-family: 'Space Mono', monospace; color: var(--fog); }
+  footer strong { color: var(--brown); }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-  <span class="header-icon">🐚</span>
-  <h1>Guía del Peregrino<br>Camino de Santiago 2026</h1>
-  <p class="subtitle">Ruta del Norte · Camino de la Costa</p>
-  <div class="route-badge">📍 Gijón → Santiago de Compostela</div>
+  <div class="header-shell">
+    <span class="shell-icon">🐚</span>
+    <h1>Camino del Norte</h1>
+    <p class="subtitle">Gijón → Santiago de Compostela &nbsp;·&nbsp; Julio – Agosto 2026</p>
+  </div>
 </header>
 
-<!-- GRUPO -->
-<div style="padding: 1.25rem 1.25rem 0;">
-  <div class="section-title">El Grupo</div>
-</div>
-<div class="group-card">
-  <h2>🧭 Los Peregrinos</h2>
-  <div class="peregrinos">
-    <span class="peregrino-chip">Juanse</span>
-    <span class="peregrino-chip">Kike</span>
-    <span class="peregrino-chip">Charlie</span>
-    <span class="peregrino-chip">Luismi</span>
-    <span class="peregrino-chip">Miranda</span>
-  </div>
-  <div class="trip-stats">
-    <div class="stat">
-      <span class="stat-num">~363</span>
-      <span class="stat-label">km totales</span>
+<div class="summary">
+  <div class="summary-grid">
+    <div class="summary-item">
+      <span class="num">14</span>
+      <span class="label">Etapas</span>
     </div>
-    <div class="stat">
-      <span class="stat-num">14</span>
-      <span class="stat-label">etapas</span>
+    <div class="summary-item">
+      <span class="num">~340 km</span>
+      <span class="label">A pie</span>
     </div>
-    <div class="stat">
-      <span class="stat-num">17</span>
-      <span class="stat-label">días</span>
+    <div class="summary-item">
+      <span class="num">5</span>
+      <span class="label">Peregrinos</span>
+    </div>
+    <div class="summary-item">
+      <span class="num">20 Jul – 6 Ago</span>
+      <span class="label">Fechas</span>
     </div>
   </div>
 </div>
 
-<!-- AVISO CREDENCIAL -->
-<div class="aviso-credencial">
-  <div class="icon">📋</div>
-  <div>
-    <strong>⚠ Imprescindible</strong>
-    <p>Llevar la <strong>credencial de peregrino</strong> para acceder a los albergues de Avilés, Luarca, La Caridad, Gontán y otros.</p>
+<!-- EQUIPO -->
+<div class="team-section">
+  <h2 class="section-title">El equipo</h2>
+  <div class="team-chips">
+    <div class="chip">🧔 Juanse <span class="role">Días 1–3</span></div>
+    <div class="chip">🧔 Kike <span class="role">Días 4–6</span></div>
+    <div class="chip">🧔 Charlie <span class="role">Días 9–11</span></div>
+    <div class="chip">🧔 Luismi <span class="role">Días 7–8</span></div>
+    <div class="chip">👩 Miranda</div>
   </div>
-</div>
-
-<!-- PROGRESO KM -->
-<div class="progress-bar-container">
-  <div class="progress-label">
-    <span>Distancia total</span>
-    <span>20 Jul → 6 Ago</span>
-  </div>
-  <div class="progress-bar"><div class="progress-bar-fill"></div></div>
-  <div class="km-total">≈ 363 km <span>en 14 etapas</span></div>
 </div>
 
 <!-- TIMELINE -->
-<div style="padding: 0 1.25rem 0.75rem;">
-  <div class="section-title" style="padding: 0 0 0.75rem;">Itinerario día a día</div>
-</div>
+<div class="timeline-section">
+  <h2 class="section-title">Las etapas</h2>
+  <div class="timeline">
 
-<div class="timeline">
-
-  <!-- DÍA 0: LLEGADA -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot llegada">20<br>JUL</div>
-    </div>
-    <div class="llegada-card">
-      <div class="day-date">Lunes, 20 de julio</div>
-      <div class="day-title">🚗 Llegada a Gijón</div>
-      <p class="etapa-desc">Punto de encuentro del grupo. Dejamos el coche en Gijón y nos preparamos para el inicio del Camino.</p>
-      <div class="tag-row" style="margin-top:0.6rem;">
-        <span class="tag tag-azul">Alojamiento: gestión propia</span>
-        <span class="tag tag-naranja">Difícil disponibilidad</span>
+    <!-- DÍA 20 JULIO - VIAJE EN COCHE -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot transit">20<br>JUL</div></div>
+    <div class="day-card transit">
+      <div class="day-header">
+        <div>
+          <div class="day-date">Domingo 20 de julio</div>
+          <div class="day-title">Viaje en coche a Gijón</div>
+          <div class="day-km">🚗 Desplazamiento — dejamos el coche en Gijón</div>
+        </div>
+        <span class="day-etapa">Día 0</span>
+      </div>
+      <div class="day-body">
+        <div class="resp-badge">🛏 Juanse</div>
+        <div class="albergue">
+          <div class="albergue-name">🏠 Albergue Pedro Solís — Avilés</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📍</span><span class="val">Calle Magdalena, 1 — Avilés</span></div>
+            <div class="albergue-row"><span class="icon">💶</span><span class="val">10 € por persona</span></div>
+            <div class="albergue-row"><span class="icon">🕐</span><span class="val">Orden de llegada — a partir de las 13:00 h</span></div>
+          </div>
+          <div class="nota">⚠️ Gijón está imposible para ese día — todo son hoteles de mínimo 180 € entre tres. Dormimos en Avilés.</div>
+        </div>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry día 0 -->
 
-  <!-- ETAPA 1 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa">21<br>JUL</div>
-    </div>
+    <!-- ETAPA 1 — 21 JULIO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">21<br>JUL</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Martes, 21 de julio · Etapa 1</div>
+          <div class="day-date">Lunes 21 de julio</div>
           <div class="day-title">Gijón → Avilés</div>
+          <div class="day-km">📏 26 km</div>
         </div>
-        <span class="km-badge">26 km</span>
+        <span class="day-etapa">Etapa 1</span>
       </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento</div>
-        <div class="aloj-nombre">Albergue Pedro Solís</div>
-        <div class="aloj-detalle">C/ Magdalena 1, Avilés</div>
-        <div class="tag-row">
-          <span class="tag tag-verde">10 € / persona</span>
-          <span class="tag tag-gris">Orden de llegada</span>
-          <span class="tag tag-dorado">Desde las 13:00</span>
-        </div>
+      <div class="day-body">
+        <div class="resp-badge">🛏 Juanse</div>
+        <p style="color:var(--mid); font-style:italic; font-size:15px;">Salida desde Gijón el primer día de marcha. Dormimos en Avilés.</p>
+        <div class="nota">📋 La noche anterior ya estábamos en Avilés (albergue Pedro Solís), así que hay que llegar en coche/transporte hasta Gijón para empezar la etapa.</div>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 1 -->
 
-  <!-- ETAPA 2 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa">22<br>JUL</div>
-    </div>
+    <!-- ETAPA 2 — 22 JULIO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">22<br>JUL</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Miércoles, 22 de julio · Etapa 2</div>
+          <div class="day-date">Martes 22 de julio</div>
           <div class="day-title">Avilés → Muros de Nalón</div>
+          <div class="day-km">📏 23 km</div>
         </div>
-        <span class="km-badge">23 km</span>
+        <span class="day-etapa">Etapa 2</span>
       </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento (opciones)</div>
-        <div class="aloj-opciones">
-          <div class="aloj-opcion">
-            <div class="aloj-nombre">Albergue Camino de la Costa</div>
-            <div class="tag-row"><span class="tag tag-verde">18–20 €</span><span class="tag tag-dorado">Check-in 12:00–14:00</span></div>
-          </div>
-          <div class="aloj-opcion secundaria">
-            <div class="aloj-nombre">Albergue (reserva WhatsApp)</div>
-            <div class="tag-row"><span class="tag tag-verde">20 €</span><span class="tag tag-azul">Requiere reserva</span></div>
+      <div class="day-body">
+        <div class="resp-badge">🛏 Juanse</div>
+        <div class="options-label">Opciones de alojamiento:</div>
+        <div class="albergue">
+          <span class="tag pref">✅ Opción principal</span>
+          <div class="albergue-name">🏠 Albergue Camino de la Costa — Muros de Nalón</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">💶</span><span class="val">18 € / persona (hab. 4 plazas, baño compartido) · 20 € / persona (hab. 2 plazas, baño compartido)</span></div>
+            <div class="albergue-row"><span class="icon">🕐</span><span class="val">Orden de llegada — a partir de las 12:00 h</span></div>
+            <div class="albergue-row"><span class="icon">🍽</span><span class="val">Desayunos, comidas y cenas disponibles en el bar del albergue</span></div>
           </div>
         </div>
+        <div class="albergue secondary">
+          <span class="tag alt">🔄 Alternativa</span>
+          <div class="albergue-name">🏠 Albergue (sin nombre confirmado) — Muros de Nalón</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">💶</span><span class="val">20 € / persona (cama en habitación compartida, podría ser litera)</span></div>
+            <div class="albergue-row"><span class="icon">🍽</span><span class="val">Cena: 14 € · Desayuno: 6 €</span></div>
+            <div class="albergue-row"><span class="icon">📋</span><span class="val">Credencial de peregrino imprescindible</span></div>
+            <div class="albergue-row"><span class="icon">🕐</span><span class="val">Check-in 14:00 h · Salida máxima 08:30 h</span></div>
+            <div class="albergue-row"><span class="icon">📱</span><span class="val">Reserva por WhatsApp</span></div>
+          </div>
+        </div>
+        <div class="nota">⚠️ En Muros de Nalón solo hay 3 albergues: el principal, esta alternativa, y uno que cierra los miércoles (justo el día que pasamos).</div>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 2 -->
 
-  <!-- ETAPA 3 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa-larga">23<br>JUL</div>
-    </div>
+    <!-- ETAPA 3 — 23 JULIO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">23<br>JUL</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Jueves, 23 de julio · Etapa 3</div>
-          <div class="day-title">Muros de Nalón → Villademoros</div>
+          <div class="day-date">Miércoles 23 de julio</div>
+          <div class="day-title">Muros de Nalón → Villademoros (Soto de Luiña)</div>
+          <div class="day-km">📏 ~36 km (Muros → Soto de Luiña 15 km + tramo a Villademoros)</div>
         </div>
-        <span class="km-badge larga">36 km ⚠</span>
+        <span class="day-etapa">Etapa 3</span>
       </div>
-      <div class="nota-especial">
-        <strong>⚡ Etapa larga:</strong> 36 km pasando por Villademoros. Salida temprana recomendada.
-      </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento (opciones)</div>
-        <div class="aloj-opciones">
-          <div class="aloj-opcion">
-            <div class="aloj-nombre">Albergue Playa de Cueva</div>
-            <div class="aloj-detalle">Llamar con días de antelación</div>
-            <div class="tag-row"><span class="tag tag-naranja">Llamar previamente</span></div>
+      <div class="day-body">
+        <div class="resp-badge">🛏 Kike</div>
+        <div class="options-label">Opciones de alojamiento en la zona de Villademoros:</div>
+        <div class="albergue">
+          <span class="tag alt">⚠️ Mínimo 7 noches</span>
+          <div class="albergue-name">🏠 Apartamentos Casa Carin — Villademoros</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📋</span><span class="val">Reserva mínima de 7 noches — NO válido para nosotros</span></div>
           </div>
-          <div class="aloj-opcion secundaria">
-            <div class="aloj-nombre">Albergue de Cadavedo</div>
-            <div class="tag-row"><span class="tag tag-gris">Sin reserva previa</span></div>
+        </div>
+        <div class="albergue secondary">
+          <span class="tag alt">⚠️ Mínimo 3 noches</span>
+          <div class="albergue-name">🏠 Albergue La Yalga — (+4,3 km tras Villademoros)</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📋</span><span class="val">Reserva mínima de 3 noches — NO válido para nosotros</span></div>
+          </div>
+        </div>
+        <div class="albergue">
+          <span class="tag pref">✅ Recomendado</span>
+          <div class="albergue-name">🏠 Albergue Playa de Cueva — (+6,8 km tras Villademoros)</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📋</span><span class="val">Llamar los días previos a la fecha — Tienen sitio de sobra</span></div>
+          </div>
+        </div>
+        <div class="albergue secondary">
+          <div class="albergue-name">🏠 Albergue de Peregrinos de Cadavedo — (1,4 km antes de Villademoros)</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📋</span><span class="val">No realizan reservas para fecha concreta</span></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 3 -->
 
-  <!-- ETAPA 4 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa">24<br>JUL</div>
-    </div>
+    <!-- ETAPA 4 — 24 JULIO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">24<br>JUL</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Viernes, 24 de julio · Etapa 4</div>
+          <div class="day-date">Jueves 24 de julio</div>
           <div class="day-title">Villademoros → Luarca</div>
+          <div class="day-km">📏 15 km</div>
         </div>
-        <span class="km-badge">15 km</span>
+        <span class="day-etapa">Etapa 4</span>
       </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento</div>
-        <div class="aloj-nombre">Albergue Villa de Luarca</div>
-        <div class="aloj-detalle">Av. Álvaro de Albornoz 3, Luarca</div>
-        <div class="tag-row">
-          <span class="tag tag-verde">11–18 €</span>
-          <span class="tag tag-azul">Reserva por email</span>
-        </div>
-      </div>
-      <div class="nota-especial">
-        <strong>📧 Kike gestiona:</strong> Enviar email con el número de personas (5) para recibir el número de cuenta y confirmar la reserva.
-      </div>
-    </div>
-  </div>
-
-  <!-- ETAPA 5 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa">25<br>JUL</div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">
-        <div>
-          <div class="day-date">Sábado, 25 de julio · Etapa 5</div>
-          <div class="day-title">Luarca → La Caridad</div>
-        </div>
-        <span class="km-badge">30 km</span>
-      </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento (opciones)</div>
-        <div class="aloj-opciones">
-          <div class="aloj-opcion">
-            <div class="aloj-nombre">Albergue La Xana</div>
-            <div class="aloj-detalle">Opción recomendada para el grupo</div>
-            <div class="tag-row">
-              <span class="tag tag-verde">100 € total (5 pers.)</span>
-              <span class="tag tag-dorado">20 € / persona</span>
-            </div>
+      <div class="day-body">
+        <div class="resp-badge">🛏 Kike</div>
+        <div class="albergue">
+          <div class="albergue-name">🏠 Albergue Villa de Luarca — Luarca</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📍</span><span class="val">Av. Álvaro de Albornoz, 3 — Luarca 33700</span></div>
+            <div class="albergue-row"><span class="icon">💶</span><span class="val">11–15 € (según temporada) / hasta 18 € en plataformas</span></div>
+            <div class="albergue-row"><span class="icon">🛏</span><span class="val">22 plazas en literas confortables</span></div>
+            <div class="albergue-row"><span class="icon">🕐</span><span class="val">Entrada: 12:00–23:00 · Salida: 05:00–09:00</span></div>
+            <div class="albergue-row"><span class="icon">📋</span><span class="val">Admite reserva — ideal para grupos · Credencial imprescindible</span></div>
+            <div class="albergue-row"><span class="icon">📞</span><span class="val">660 819 434</span></div>
+            <div class="albergue-row"><span class="icon">✉️</span><span class="val"><a href="mailto:info@alberguevilladeluarca.com">info@alberguevilladeluarca.com</a></span></div>
+            <div class="albergue-row"><span class="icon">🌐</span><span class="val"><a href="https://alberguevilladeluarca.com" target="_blank">alberguevilladeluarca.com</a></span></div>
           </div>
-          <div class="aloj-opcion secundaria">
-            <div class="aloj-nombre">Albergue Municipal</div>
-            <div class="tag-row">
-              <span class="tag tag-verde">10 € / persona</span>
-              <span class="tag tag-gris">Sin reserva</span>
-            </div>
+          <div class="nota">📧 Para reservar: enviar email con número de personas y fecha. Envían número de cuenta para hacer el ingreso.</div>
+        </div>
+      </div>
+    </div>
+    </div><!-- /day-entry etapa 4 -->
+
+    <!-- ETAPA 5 — 25 JULIO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">25<br>JUL</div></div>
+    <div class="day-card">
+      <div class="day-header">
+        <div>
+          <div class="day-date">Viernes 25 de julio</div>
+          <div class="day-title">Luarca → A Caridad</div>
+          <div class="day-km">📏 30 km</div>
+        </div>
+        <span class="day-etapa">Etapa 5</span>
+      </div>
+      <div class="day-body">
+        <div class="resp-badge">🛏 Kike</div>
+        <div class="options-label">Opciones de alojamiento:</div>
+        <div class="albergue">
+          <span class="tag pref">✅ Opción A</span>
+          <div class="albergue-name">🏠 Albergue de Peregrinos de La Caridad</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📍</span><span class="val">Av. Asturias, s/n — La Caridad (a la entrada, a pie de camino)</span></div>
+            <div class="albergue-row"><span class="icon">📞</span><span class="val">+34 624 841 217</span></div>
+            <div class="albergue-row"><span class="icon">✉️</span><span class="val"><a href="mailto:albergueacarida@hotmail.com">albergueacarida@hotmail.com</a></span></div>
+            <div class="albergue-row"><span class="icon">💶</span><span class="val">10 € / noche — dormitorio compartido</span></div>
+            <div class="albergue-row"><span class="icon">🛏</span><span class="val">18 plazas en 1 dormitorio compartido</span></div>
+            <div class="albergue-row"><span class="icon">📋</span><span class="val">No admite reservas · Solo peregrinos</span></div>
+            <div class="albergue-row"><span class="icon">🕐</span><span class="val">Registro desde las 11:00 · Cierre a las 22:00</span></div>
+            <div class="albergue-row"><span class="icon">📅</span><span class="val">Disponible del 1 de abril al 30 de noviembre</span></div>
+          </div>
+        </div>
+        <div class="albergue secondary">
+          <span class="tag alt">🔄 Opción B</span>
+          <div class="albergue-name">🏠 Albergue La Xana — La Caridad, El Franco</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📅</span><span class="val">Disponibilidad consultada: 25–26 julio 2026 (para 5 huéspedes)</span></div>
+            <div class="albergue-row"><span class="icon">🛏</span><span class="val">Habitación triple con baño privado: 66 € (máx. 3 huéspedes)</span></div>
+            <div class="albergue-row"><span class="icon">🛏</span><span class="val">Litera inferior nº14: 17 € · Litera superior nº13: 17 €</span></div>
+            <div class="albergue-row"><span class="icon">💶</span><span class="val"><strong>Total 5 personas: 100 €</strong></span></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 5 -->
 
-  <!-- ETAPA 6 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa">26<br>JUL</div>
-    </div>
+    <!-- ETAPA 6 — 26 JULIO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">26<br>JUL</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Domingo, 26 de julio · Etapa 6</div>
-          <div class="day-title">La Caridad → Ribadeo</div>
+          <div class="day-date">Sábado 26 de julio</div>
+          <div class="day-title">A Caridad → Ribadeo</div>
+          <div class="day-km">📏 22 km · Cruzamos a Galicia 🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
         </div>
-        <span class="km-badge">22 km</span>
+        <span class="day-etapa">Etapa 6</span>
       </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento</div>
-        <div class="aloj-nombre">Albergue Viruxe</div>
-        <div class="aloj-detalle">Ribadeo</div>
-        <div class="tag-row">
-          <span class="tag tag-azul">Admite reserva ✓</span>
+      <div class="day-body">
+        <div class="resp-badge">🛏 Luismi</div>
+        <div class="albergue">
+          <div class="albergue-name">🏠 Albergue Viruxe — Ribadeo</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📍</span><span class="val">Camiño Veiga da Aira, 4 — Ribadeo (a la salida, a pie de camino, a 800 m del centro)</span></div>
+            <div class="albergue-row"><span class="icon">📞</span><span class="val">+34 608 986 702</span></div>
+            <div class="albergue-row"><span class="icon">✉️</span><span class="val"><a href="mailto:albergueviruxe@gmail.com">albergueviruxe@gmail.com</a></span></div>
+            <div class="albergue-row"><span class="icon">📋</span><span class="val">Admite reserva · Solo peregrinos · Disponible todo el año</span></div>
+            <div class="albergue-row"><span class="icon">🕐</span><span class="val">Registro de 14:00 a 20:00</span></div>
+            <div class="albergue-row"><span class="icon">⭐</span><span class="val">21 votos positivos · 5 negativos</span></div>
+          </div>
         </div>
-      </div>
-      <div class="nota-especial">
-        <strong>📌 Luismi gestiona:</strong> Albergue con reserva confirmable, ideal para el grupo de 5.
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 6 -->
 
-  <!-- ETAPA 7 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa">27<br>JUL</div>
-    </div>
+    <!-- ETAPA 7 — 27 JULIO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">27<br>JUL</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Lunes, 27 de julio · Etapa 7</div>
+          <div class="day-date">Domingo 27 de julio</div>
           <div class="day-title">Ribadeo → Vilanova de Lourenzá</div>
+          <div class="day-km">📏 27 km</div>
         </div>
-        <span class="km-badge">27 km</span>
+        <span class="day-etapa">Etapa 7</span>
       </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento</div>
-        <div class="aloj-nombre">Albergue de Lourenzá</div>
-        <div class="tag-row">
-          <span class="tag tag-verde">10 €</span>
-          <span class="tag tag-gris">Sin reserva</span>
+      <div class="day-body">
+        <div class="resp-badge">🛏 Luismi</div>
+        <div class="albergue">
+          <div class="albergue-name">🏠 Albergue de Peregrinos de Lourenzá — Vilanova de Lourenzá</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📍</span><span class="val">Praza da Gracia, s/n — Vilanova de Lourenzá (a 100 m del camino)</span></div>
+            <div class="albergue-row"><span class="icon">📞</span><span class="val">+34 652 186 731</span></div>
+            <div class="albergue-row"><span class="icon">💶</span><span class="val">10 € / persona — dormitorio compartido</span></div>
+            <div class="albergue-row"><span class="icon">📋</span><span class="val">No admite reservas · Solo peregrinos · Disponible todo el año</span></div>
+            <div class="albergue-row"><span class="icon">🕐</span><span class="val">Registro a las 13:00 · Cierre a las 22:00</span></div>
+            <div class="albergue-row"><span class="icon">⭐</span><span class="val">17 votos positivos · 4 negativos</span></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 7 -->
 
-  <!-- ETAPA 8 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa">28<br>JUL</div>
-    </div>
+    <!-- ETAPA 8 — 28 JULIO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">28<br>JUL</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Martes, 28 de julio · Etapa 8</div>
-          <div class="day-title">Vilanova → Abadín / Gontán</div>
+          <div class="day-date">Lunes 28 de julio</div>
+          <div class="day-title">Vilanova → Abadín</div>
+          <div class="day-km">📏 25 km</div>
         </div>
-        <span class="km-badge">25 km</span>
+        <span class="day-etapa">Etapa 8</span>
       </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento</div>
-        <div class="aloj-nombre">Albergue de Gontán</div>
-        <div class="tag-row">
-          <span class="tag tag-verde">10 €</span>
-          <span class="tag tag-gris">Sin reserva</span>
-          <span class="tag tag-dorado">Registro a las 13:00</span>
+      <div class="day-body">
+        <div class="resp-badge">🛏 Charlie</div>
+        <div class="albergue">
+          <div class="albergue-name">🏠 Albergue de Peregrinos de Gontán — Gontán (Abadín)</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📍</span><span class="val">Ctra. Labrada, s/n — Gontán (céntrico y a pie de camino)</span></div>
+            <div class="albergue-row"><span class="icon">📞</span><span class="val">+34 649 446 757</span></div>
+            <div class="albergue-row"><span class="icon">🌐</span><span class="val"><a href="http://www.caminodesantiago.gal" target="_blank">caminodesantiago.gal</a></span></div>
+            <div class="albergue-row"><span class="icon">💶</span><span class="val">10 € — dormitorio compartido</span></div>
+            <div class="albergue-row"><span class="icon">📋</span><span class="val">No admite reservas · Solo peregrinos · Disponible todo el año</span></div>
+            <div class="albergue-row"><span class="icon">🕐</span><span class="val">Registro a las 13:00 · Cierre a las 22:00</span></div>
+            <div class="albergue-row"><span class="icon">⭐</span><span class="val">18 votos positivos · 2 negativos</span></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 8 -->
 
-  <!-- ETAPA 9 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa">29<br>JUL</div>
-    </div>
+    <!-- ETAPA 9 — 29 JULIO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">29<br>JUL</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Miércoles, 29 de julio · Etapa 9</div>
+          <div class="day-date">Martes 29 de julio</div>
           <div class="day-title">Abadín → Vilalba</div>
+          <div class="day-km">📏 21 km</div>
         </div>
-        <span class="km-badge">21 km</span>
+        <span class="day-etapa">Etapa 9</span>
       </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento</div>
-        <div class="aloj-nombre">Albergue de Vilalba</div>
-        <div class="tag-row">
-          <span class="tag tag-gris">Sin reserva</span>
+      <div class="day-body">
+        <div class="resp-badge">🛏 Charlie</div>
+        <div class="albergue">
+          <div class="albergue-name">🏠 Albergue de Peregrinos de Vilalba</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">📍</span><span class="val">Pol. ind. de Vilalba, s/n (a pie de camino; 1,2 km antes de Vilalba / 2 km del centro)</span></div>
+            <div class="albergue-row"><span class="icon">📞</span><span class="val">+34 649 900 391 · +34 649 093 908</span></div>
+            <div class="albergue-row"><span class="icon">🌐</span><span class="val"><a href="http://www.caminodesantiago.gal" target="_blank">caminodesantiago.gal</a></span></div>
+            <div class="albergue-row"><span class="icon">📋</span><span class="val">No admite reservas · Solo peregrinos · Disponible todo el año</span></div>
+            <div class="albergue-row"><span class="icon">⭐</span><span class="val">8 votos positivos · 3 negativos</span></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 9 -->
 
-  <!-- ETAPA 10 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa-larga">30<br>JUL</div>
-    </div>
+    <!-- ETAPA 10 — 30 JULIO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">30<br>JUL</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Jueves, 30 de julio · Etapa 10</div>
-          <div class="day-title">Vilalba → Miraz</div>
+          <div class="day-date">Miércoles 30 de julio</div>
+          <div class="day-title">Vilalba → Baamonde → Curral da Fonte</div>
+          <div class="day-km">📏 36 km — ¡etapa larga!</div>
         </div>
-        <span class="km-badge larga">36 km ⚠</span>
+        <span class="day-etapa">Etapa 10</span>
       </div>
-      <div class="nota-especial">
-        <strong>⏰ Charlie gestiona / Estrategia clave:</strong> Madrugar para llegar pronto. Solo <strong>20 plazas</strong> disponibles, por orden de llegada. El albergue abre a las 14:00 h.
-      </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento</div>
-        <div class="aloj-nombre">Albergue San Martín de Miraz</div>
-        <div class="aloj-detalle">Curral da Fonte · Gestionado por voluntarios</div>
-        <div class="tag-row">
-          <span class="tag tag-dorado">Por donativo</span>
-          <span class="tag tag-naranja">Abre a las 14:00</span>
-          <span class="tag tag-naranja">20 plazas</span>
-          <span class="tag tag-gris">Orden de llegada</span>
+      <div class="day-body">
+        <div class="resp-badge">🛏 Charlie</div>
+        <div class="albergue">
+          <div class="albergue-name">🏠 Albergue de Corrual da Fonte de San Martín Miraz</div>
+          <div class="albergue-rows">
+            <div class="albergue-row"><span class="icon">💶</span><span class="val">Funciona por donativos</span></div>
+            <div class="albergue-row"><span class="icon">🕐</span><span class="val">Abren a las 14:00 — orden de llegada</span></div>
+            <div class="albergue-row"><span class="icon">🛏</span><span class="val">20 camas en total · No suele estar muy concurrido</span></div>
+            <div class="albergue-row"><span class="icon">🏳️</span><span class="val">Gestión: empresa/familia inglesa con voluntarios españoles</span></div>
+          </div>
+          <div class="nota">⚠️ Etapa de 36 km — hay que madrugar para intentar llegar antes de las 14:00 y asegurar plaza. Existe un albergue cercano alternativo por si estuviera lleno.</div>
         </div>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 10 -->
 
-  <!-- ETAPA 11 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa">31<br>JUL</div>
-    </div>
+    <!-- ETAPA 11 — 31 JULIO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">31<br>JUL</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Viernes, 31 de julio · Etapa 11</div>
-          <div class="day-title">Miraz → Sobrado dos Monxes</div>
+          <div class="day-date">Jueves 31 de julio</div>
+          <div class="day-title">Curral da Fonte → Sobrado</div>
+          <div class="day-km">📏 26 km</div>
         </div>
-        <span class="km-badge">26 km</span>
+        <span class="day-etapa">Etapa 11</span>
       </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento</div>
-        <div class="aloj-nombre">Sobrado dos Monxes</div>
-        <div class="aloj-detalle">Por confirmar — albergue del monasterio o municipal</div>
-        <div class="tag-row"><span class="tag tag-gris">Por confirmar</span></div>
+      <div class="day-body">
+        <p style="color:var(--mid); font-style:italic; font-size:15px;">Alojamiento en Sobrado dos Monxes — información pendiente de confirmar.</p>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 11 -->
 
-  <!-- ETAPA 12 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa">01<br>AGO</div>
-    </div>
+    <!-- ETAPA 12 — 1 AGOSTO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">01<br>AGO</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Sábado, 1 de agosto · Etapa 12</div>
+          <div class="day-date">Viernes 1 de agosto</div>
           <div class="day-title">Sobrado → Arzúa</div>
+          <div class="day-km">📏 22 km</div>
         </div>
-        <span class="km-badge">22 km</span>
+        <span class="day-etapa">Etapa 12</span>
       </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento</div>
-        <div class="aloj-nombre">Arzúa</div>
-        <div class="aloj-detalle">Por confirmar — varios albergues disponibles</div>
-        <div class="tag-row"><span class="tag tag-gris">Por confirmar</span></div>
+      <div class="day-body">
+        <p style="color:var(--mid); font-style:italic; font-size:15px;">Alojamiento en Arzúa — información pendiente de confirmar.</p>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 12 -->
 
-  <!-- ETAPA 13 -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot etapa">02<br>AGO</div>
-    </div>
+    <!-- ETAPA 13 — 2 AGOSTO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot etapa">02<br>AGO</div></div>
     <div class="day-card">
       <div class="day-header">
         <div>
-          <div class="day-date">Domingo, 2 de agosto · Etapa 13</div>
-          <div class="day-title">Arzúa → O Pedrouzo</div>
+          <div class="day-date">Sábado 2 de agosto</div>
+          <div class="day-title">Arzúa → Pedrouzo</div>
+          <div class="day-km">📏 20 km</div>
         </div>
-        <span class="km-badge">20 km</span>
+        <span class="day-etapa">Etapa 13</span>
       </div>
-      <div class="alojamiento">
-        <div class="aloj-label">🏠 Alojamiento</div>
-        <div class="aloj-nombre">O Pedrouzo</div>
-        <div class="aloj-detalle">Última noche antes de Santiago</div>
-        <div class="tag-row"><span class="tag tag-gris">Por confirmar</span></div>
+      <div class="day-body">
+        <p style="color:var(--mid); font-style:italic; font-size:15px;">Alojamiento en Pedrouzo (O Pino) — información pendiente de confirmar. Última noche antes de Santiago.</p>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 13 -->
 
-  <!-- ETAPA 14 — LLEGADA A SANTIAGO -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot destino">03<br>AGO</div>
-    </div>
-    <div class="destino-card">
-      <div class="day-date">Lunes, 3 de agosto · Etapa 14 · FINAL</div>
-      <div class="day-title">🏛 O Pedrouzo → Santiago de Compostela</div>
-      <p class="etapa-desc" style="color:rgba(255,255,255,0.85);">Llegada a la Catedral de Santiago de Compostela. ¡Buen Camino, peregrinos! 🎉</p>
-      <div class="tag-row" style="margin-top:0.75rem;">
-        <span class="tag" style="background:rgba(255,255,255,0.2);color:white;">20 km</span>
-        <span class="tag" style="background:rgba(255,255,255,0.2);color:white;">🏅 Meta</span>
+    <!-- ETAPA 14 — 3 AGOSTO -->
+    <div class="day-entry">
+    <div class="day-dot-col"><div class="day-dot destino">03<br>AGO</div></div>
+    <div class="day-card">
+      <div class="day-header">
+        <div>
+          <div class="day-date">Domingo 3 de agosto</div>
+          <div class="day-title">Pedrouzo → Santiago de Compostela 🎉</div>
+          <div class="day-km">📏 20 km · ¡La última etapa!</div>
+        </div>
+        <span class="day-etapa">Etapa 14</span>
+      </div>
+      <div class="day-body">
+        <div class="arrival-box">
+          <span class="big">🏛 Santiago de Compostela</span>
+          <span class="sub">Llegada estimada: 3 de agosto · 2 días en Santiago antes de volver a Gijón</span>
+        </div>
+        <div class="nota" style="margin-top:14px;">🚗 Plan de vuelta: En coche (o bus) de Santiago a Gijón para recoger el coche que dejamos al principio. Salida de Santiago aprox. 5/6 de agosto.</div>
       </div>
     </div>
-  </div>
+    </div><!-- /day-entry etapa 14 -->
 
-  <!-- ESTANCIA 4-5 AGO -->
-  <div class="day-entry">
-    <div class="day-dot-col">
-      <div class="day-dot estancia">4–5<br>AGO</div>
-    </div>
-    <div class="estancia-card">
-      <div class="day-date" style="color:var(--fog);">Martes–Miércoles, 4–5 de agosto</div>
-      <div class="day-title" style="font-size:1rem;color:var(--stone);">Estancia en Santiago</div>
-      <p style="font-size:0.88rem;color:var(--fog);margin-top:0.35rem;">Descanso, Misa del Peregrino y visita a la ciudad. Regreso a Gijón en coche o bus para recoger el vehículo.</p>
-    </div>
-  </div>
-
-</div><!-- /timeline -->
+  </div><!-- /timeline -->
+</div><!-- /timeline-section -->
 
 <footer>
-  <span class="shell-footer">🐚</span>
-  <span class="buen-camino">¡Buen Camino!</span>
-  GUÍA INTERNA · GRUPO DE 5 PEREGRINOS<br>
-  CAMINO DEL NORTE · JULIO–AGOSTO 2026<br><br>
-  JUANSE · KIKE · CHARLIE · LUISMI · MIRANDA
+  <p>🐚 <strong>Camino del Norte 2026</strong> — Juanse · Kike · Charlie · Luismi · Miranda</p>
+  <p style="margin-top:6px; font-size:13px;">Buen Camino ✨</p>
 </footer>
 
 </body>
